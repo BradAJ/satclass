@@ -62,3 +62,14 @@ def spiral_stepper(step_size = 1, max_steps = 1):
 
     return _next_spiral_corner(x0=0, y0=0, k=1, accum=[(0,0)], 
                                 max_len=max_steps, step_size=step_size) 
+
+def send2S3(file_path,bucket_name,s3_filename):
+    """
+    run:
+    !tar czf tarball_of_dir.tar.gz dirpath/
+    """
+    conn = boto.s3.connection.S3Connection(awspubkey,awsseckey)
+    bucket = conn.get_bucket(bucket_name)
+    k = boto.s3.key.Key(bucket)
+    k.key = s3_filename
+    k.set_contents_from_filename(file_path)
