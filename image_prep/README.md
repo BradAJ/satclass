@@ -21,3 +21,6 @@ When running this program, a user clicks on the regions of interest in a batch o
     q: Quit. 
 
 Note: save_image_annotation.py requires OpenCV.
+
+Once the images have been annotated, they can be cropped to sizes appropriate for image classification tasks. Run the script `cut_and_save_rois.py` to write a bunch "postage stamp" images to disk in directories for positive_samples and negative_samples. The script is set up to run from the command line (with calling instructions embedded, like with save_image_annotation.py). Example usage:
+``python cut_and_save_rois.py image_metadata/roi_pixel_info.json -p input/image/dir -o output/rois/dir > output_metadata.json`` 
